@@ -1,5 +1,8 @@
 package scrabble;
+
 import IGU.Front;
+import java.lang.ClassNotFoundException;
+        
 public class Scrabble {
 
     public static void main(String[] args) {
@@ -7,3 +10,4 @@ public class Scrabble {
         i.setVisible(true);
      }
 }
+
