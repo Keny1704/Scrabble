@@ -1,12 +1,12 @@
 package scrabble;
 
-import IGU.Front;
+import IGU.Intro;
 import java.lang.ClassNotFoundException;
         
 public class Scrabble {
 
     public static void main(String[] args) {
-        Front i = new Front();
+        Intro i = new Intro();
         i.setVisible(true);
      }
 }
