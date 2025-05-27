@@ -8,12 +8,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
-public class salirIntro extends JButton{
-    public salirIntro(){
-        setColor(Color.white);
-        colorOver = new Color(255, 87, 87);
-        colorClick = new Color(255, 47, 47);
-        borderColor = new Color(164, 14, 14);
+public class jugarIntro extends JButton{
+    public jugarIntro(){
+        setColor(Color.lightGray);
+        colorOver = new Color(95, 170, 255);
+        colorClick = new Color(0, 120, 255);
+        borderColor = new Color(14, 84, 164);
         setContentAreaFilled(false);
         
         addMouseListener(new MouseAdapter() {
