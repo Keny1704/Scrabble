@@ -53,7 +53,7 @@ public class Menu extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }
         });
-    }   
+    }
     
     public void setTamañoBackground(Dimension tamaño, String rutaImagen) {
         int ancho = (int) tamaño.getWidth();
@@ -76,7 +76,6 @@ public class Menu extends javax.swing.JFrame {
             audio.loop(Clip.LOOP_CONTINUOUSLY);
             audio.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
         }
     }
     

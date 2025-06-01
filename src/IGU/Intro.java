@@ -1,18 +1,11 @@
 package IGU;
 
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
-
 public class Intro extends javax.swing.JFrame {
 
     public Intro() {
         initComponents();
         setLocationRelativeTo(null);
+        setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30)); // Bordes redondeados
     }
     
     @SuppressWarnings("unchecked")
@@ -77,8 +70,9 @@ public class Intro extends javax.swing.JFrame {
     }//GEN-LAST:event_salirIntro1ActionPerformed
 
     private void jugarIntro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarIntro1ActionPerformed
-        Menu newFrame = new Menu();
+        PantallaCarga newFrame = new PantallaCarga();
         newFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jugarIntro1ActionPerformed
 
     public static void main(String args[]) {
