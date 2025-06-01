@@ -39,6 +39,7 @@ public class Intro extends javax.swing.JFrame {
         salirIntro1.setForeground(new java.awt.Color(164, 14, 14));
         salirIntro1.setText("SALIR");
         salirIntro1.setColor(new java.awt.Color(255, 151, 151));
+        salirIntro1.setFocusable(false);
         salirIntro1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         salirIntro1.setRadio(50);
         salirIntro1.setRequestFocusEnabled(false);
@@ -53,6 +54,7 @@ public class Intro extends javax.swing.JFrame {
         jugarIntro1.setForeground(new java.awt.Color(14, 84, 164));
         jugarIntro1.setText("JUGAR");
         jugarIntro1.setColor(new java.awt.Color(145, 198, 246));
+        jugarIntro1.setFocusable(false);
         jugarIntro1.setFont(new java.awt.Font("Jokerman", 1, 18)); // NOI18N
         jugarIntro1.setRadio(50);
         jugarIntro1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +79,6 @@ public class Intro extends javax.swing.JFrame {
     private void jugarIntro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarIntro1ActionPerformed
         Menu newFrame = new Menu();
         newFrame.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jugarIntro1ActionPerformed
 
     public static void main(String args[]) {

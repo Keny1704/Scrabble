@@ -1,7 +1,6 @@
 package scrabble;
 
 import IGU.Intro;
-import java.lang.ClassNotFoundException;
         
 public class Scrabble {
 
@@ -9,6 +8,5 @@ public class Scrabble {
         Intro i = new Intro();
         i.setVisible(true);
      }
-    
 }
 
