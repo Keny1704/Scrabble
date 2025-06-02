@@ -58,7 +58,7 @@ public class PantallaCarga extends javax.swing.JFrame {
         private void iniciarTransicion() {
             Timer timer = new Timer(50, e -> {
                 if (progreso < 1.0f) { 
-                    progreso += 0.03f;
+                    progreso += 0.53f;
                     labelImagen.repaint();
                 } else {
                     ((Timer) e.getSource()).stop();

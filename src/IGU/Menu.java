@@ -1,5 +1,6 @@
 package IGU;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -8,20 +9,65 @@ import javax.swing.JLabel;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.*;
+import javax.swing.JButton;
+import scrabble.ReproductorAudio;
 
 
 public class Menu extends javax.swing.JFrame {
-    private Clip audio;
     private JLabel imagen;
+    private int volumenState = 0;
+    private JButton btnVolumen;
     
     public Menu() {
         initComponents();
         Dimension tamaño = Toolkit.getDefaultToolkit().getScreenSize();
         setTamañoBackground(tamaño, "/imagenes/menu.png");
+        ReproductorAudio.getInstancia("src/audio/menu.wav");
+        initVolumeButton();
         this.setExtendedState(MAXIMIZED_BOTH);
-        reproducirAudio("src/audio/menu.wav");
     }
 
+    private void initVolumeButton() {
+        javax.swing.UIManager.put("Button.background", new Color(0, 0, 0, 0));
+
+        ImageIcon iconMax = new ImageIcon(getClass().getResource("/imagenes/volMax.png"));
+        ImageIcon iconMin = new ImageIcon(getClass().getResource("/imagenes/volMin.png"));
+        ImageIcon iconMute = new ImageIcon(getClass().getResource("/imagenes/volMute.png"));
+        
+        
+        btnVolumen = new JButton(iconMax);
+        // Ubica el botón en la esquina superior izquierda; ajústalo según tu diseño
+        btnVolumen.setBounds(20, 20, 50, 50);
+        btnVolumen.setBorderPainted(false);
+        btnVolumen.setFocusPainted(false);
+        
+        btnVolumen.addActionListener(e -> {
+            // Incrementamos el estado cíclicamente (0 -> 1 -> 2 -> 0)
+            volumenState = (volumenState + 1) % 3;
+            switch (volumenState) {
+                case 0:
+                    btnVolumen.setIcon(iconMax);
+                    ReproductorAudio.getInstancia("src/audio/menu.wav").ajustarVolumen(1.0);
+                    break;
+                case 1:
+                    btnVolumen.setIcon(iconMin);
+                    ReproductorAudio.getInstancia("src/audio/menu.wav").ajustarVolumen(0.5);
+                    break;
+                case 2:
+                    btnVolumen.setIcon(iconMute);
+                    ReproductorAudio.getInstancia("src/audio/menu.wav").ajustarVolumen(0.0);
+                    break;
+            }
+        });
+        
+        // Agregamos el botón al panel. Si el fondo está en un JLabel, es importante agregar el botón después
+        jPanel1.add(btnVolumen);
+        // Opcional: si el JLabel del fondo cubre todo el panel, puedes agregar el botón al fondo o ajustar el Z-order.
+        btnVolumen.setVisible(true);
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,11 +83,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
         );
 
         pack();
@@ -65,18 +111,6 @@ public class Menu extends javax.swing.JFrame {
         imagen.setBounds(0, 0, ancho, alto);
         jPanel1.add(imagen);
         
-    }
-
-    private void reproducirAudio(String rutaAudio) {
-        try {
-            File archivo = new File(rutaAudio);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(archivo);
-            audio = AudioSystem.getClip();
-            audio.open(audioStream);
-            audio.loop(Clip.LOOP_CONTINUOUSLY);
-            audio.start();
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
