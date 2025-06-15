@@ -530,21 +530,33 @@ public class ScrabbleMain {
                     
                     boolean flag = true;
                     do {
-                        nuevaLetra = JOptionPane.showInputDialog(ventanaTablero, "Escribe la letra que quieres que sea esta ficha", "Comodín", JOptionPane.INFORMATION_MESSAGE);
+                        nuevaLetra = JOptionPane.showInputDialog(
+                                ventanaTablero,
+                                "Escribe la letra que quieres que sea esta ficha",
+                                "Comodín",
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
 
-                        // Validar si la entrada es una letra o una combinación aceptada (LL, RR, CH)
-                        if (nuevaLetra != null && (nuevaLetra.length() == 1 && Character.isLetter(nuevaLetra.charAt(0))) 
-                            || nuevaLetra.equalsIgnoreCase("LL") 
-                            || nuevaLetra.equalsIgnoreCase("RR") 
-                            || nuevaLetra.equalsIgnoreCase("CH")) {
+                        if (nuevaLetra != null) {
+                            nuevaLetra = nuevaLetra.toUpperCase(); // Convertir de una vez a mayúsculas
 
-                            nuevaLetra = nuevaLetra.toUpperCase(); // Convertir a mayúsculas
-                            flag = false;  // Salir del bucle
+                            if (nuevaLetra.equals("K") || nuevaLetra.equals("W")) {
+                                JOptionPane.showMessageDialog(ventanaTablero, "La letra K y W no están permitidas.");
+                            }
+                            else if ((nuevaLetra.length() == 1 && Character.isLetter(nuevaLetra.charAt(0)))
+                                    || nuevaLetra.equals("LL")
+                                    || nuevaLetra.equals("RR")
+                                    || nuevaLetra.equals("CH")) {
 
+                                flag = false;
+                            } else {
+                                JOptionPane.showMessageDialog(ventanaTablero, "Entrada inválida. Debes ingresar solo una letra o combinaciones válidas (LL, RR, CH).");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(ventanaTablero, "Entrada inválida. Debes ingresar solo una letra o combinaciones válidas (LL, RR, CH).");
+                            JOptionPane.showMessageDialog(ventanaTablero, "Debes ingresar un valor.");
                         }
                     } while (flag);
+
 
                     String letra = nuevaLetra;
                     fichaActual.setLetra(letra);
