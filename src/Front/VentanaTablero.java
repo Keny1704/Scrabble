@@ -519,18 +519,16 @@ public class VentanaTablero extends javax.swing.JFrame {
         for (int i = 0; i < tablero.casillas.size(); i++) {
 
             if (tablero.casillas.get(i).getFichaAsignada() == null) {
-
                 listaCasillaBoton.get(i).setText(tablero.casillas.get(i).getLabel());
-            if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("3xP")) {
-                listaCasillaBoton.get(i).setBackground(new Color(241, 141, 64));
-            } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("3xL")) {
-                listaCasillaBoton.get(i).setBackground(new Color(69, 81, 232));
-            } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("2xP")) {
-                listaCasillaBoton.get(i).setBackground(new Color(255, 143, 226));
-            } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("2xL")) {
-                listaCasillaBoton.get(i).setBackground(new Color(134, 220, 255));
-            }
-            
+                if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("3xP")) {
+                    listaCasillaBoton.get(i).setBackground(new Color(241, 141, 64));
+                } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("3xL")) {
+                    listaCasillaBoton.get(i).setBackground(new Color(69, 81, 232));
+                } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("2xP")) {
+                    listaCasillaBoton.get(i).setBackground(new Color(255, 143, 226));
+                } else if (tablero.casillas.get(i).getLabel().equalsIgnoreCase("2xL")) {
+                    listaCasillaBoton.get(i).setBackground(new Color(134, 220, 255));
+                }
                 if (i == 112) {
                     listaCasillaBoton.get(i).setBackground(new Color(229, 65, 176));
                 }
@@ -541,7 +539,13 @@ public class VentanaTablero extends javax.swing.JFrame {
             } else {
                 listaCasillaBoton.get(i).setEnabled(false);
             }
-
+        }
+        
+        int index = tablero.getFichasJugadasEsteTurno();
+        if(index != 0){
+            if(!tablero.casillas.get(index).getValido() && tablero.casillas.get(index).getOcupado()){
+                tablero.casillas.get(index).setValidacion(true);
+            }
         }
     }
 

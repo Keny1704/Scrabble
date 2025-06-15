@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -225,6 +226,8 @@ public class ScrabbleMain {
             ventanaTablero.setBotonJuegoNuevo1Establecido(false);
             ventanaTablero.setVerificarBotonEstablecido(true);
             ventanaTablero.actualizarTablero(tablero); 
+            
+            tablero.restablecerFichasJugadasEsteTurno();
         }
         );
     }
@@ -242,10 +245,11 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
-
+                
                 for (Casilla casillaActual : tablero.casillas) {
                     if (casillaActual.getOcupado()) {
                         casillaActual.setValidacion(false);
@@ -262,11 +266,13 @@ public class ScrabbleMain {
                 ventanaTablero.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                         new ImageIcon("src/Front/Scrabble_icon.png").getImage(),
                         new Point(0, 0), "custom cursor"));
+                
                 ventanaTablero.actualizarTablero(tablero);
             }
         }
         );
     }
+    
     public void rackButton2Pressed() {
         ventanaTablero.añadirBotonRack2ActionListener((java.awt.event.ActionEvent evt) -> {
             if (estadoJuego.getEstadoJuego() == EstadoJuego.RACK_FICHA_SELECCIONADA) {
@@ -280,6 +286,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -289,7 +296,7 @@ public class ScrabbleMain {
                         casillaActual.setValidacion(false);
                     }
                 }
-               
+
                 ventanaTablero.setBotonRack1Enabled(false);
                 ventanaTablero.setBotonRack2bg(java.awt.Color.yellow);
                 ventanaTablero.setBotonRack3Enabled(false);
@@ -305,6 +312,7 @@ public class ScrabbleMain {
         }
         );
     }
+
     public void rackButton3Pressed() {
         ventanaTablero.añadirBotonRack3ActionListener((java.awt.event.ActionEvent evt) -> {
             if (estadoJuego.getEstadoJuego() == EstadoJuego.RACK_FICHA_SELECCIONADA) {
@@ -318,6 +326,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -327,6 +336,7 @@ public class ScrabbleMain {
                         casillaActual.setValidacion(false);
                     }
                 }
+                
                 ventanaTablero.setBotonRack1Enabled(false);
                 ventanaTablero.setBotonRack2Enabled(false);
                 ventanaTablero.setBotonRack3bg(java.awt.Color.yellow);
@@ -342,6 +352,7 @@ public class ScrabbleMain {
         }
         );
     }
+
     public void rackButton4Pressed() {
         ventanaTablero.añadirBotonRack4ActionListener((java.awt.event.ActionEvent evt) -> {
             if (estadoJuego.getEstadoJuego() == EstadoJuego.RACK_FICHA_SELECCIONADA) {
@@ -355,6 +366,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -379,6 +391,7 @@ public class ScrabbleMain {
         }
         );
     }
+
     public void rackButton5Pressed() {
         ventanaTablero.añadirBotonRack5ActionListener((java.awt.event.ActionEvent evt) -> {
             if (estadoJuego.getEstadoJuego() == EstadoJuego.RACK_FICHA_SELECCIONADA) {
@@ -392,6 +405,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -409,7 +423,6 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(false);
                 ventanaTablero.setBotonRack7Enabled(false);
 
-
                 ventanaTablero.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                         new ImageIcon("src/Front/Scrabble_icon.png").getImage(),
                         new Point(0, 0), "custom cursor"));
@@ -419,6 +432,7 @@ public class ScrabbleMain {
         }
         );
     }
+
     public void rackButton6Pressed() {
         ventanaTablero.añadirBotonRack6ActionListener((java.awt.event.ActionEvent evt) -> {
             if (estadoJuego.getEstadoJuego() == EstadoJuego.RACK_FICHA_SELECCIONADA) {
@@ -432,6 +446,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6bg(java.awt.Color.orange);
                 ventanaTablero.setBotonRack7Enabled(true);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -449,7 +464,6 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6bg(java.awt.Color.yellow);
                 ventanaTablero.setBotonRack7Enabled(false);
 
-
                 ventanaTablero.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
                         new ImageIcon("src/Front/Scrabble_icon.png").getImage(),
                         new Point(0, 0), "custom cursor"));
@@ -457,8 +471,9 @@ public class ScrabbleMain {
                 ventanaTablero.actualizarTablero(tablero);
             }
         }
-        ); 
+        );
     }
+
     public void rackButton7Pressed() {
         ventanaTablero.añadirBotonRack7ActionListener((java.awt.event.ActionEvent evt) -> {
 
@@ -473,6 +488,7 @@ public class ScrabbleMain {
                 ventanaTablero.setBotonRack6Enabled(true);
                 ventanaTablero.setBotonRack7bg(java.awt.Color.orange);
                 ventanaTablero.setCursor(Cursor.getDefaultCursor());
+                ventanaTablero.actualizarTablero(tablero);
             } else {
                 estadoJuego.setEstadoJuego(EstadoJuego.RACK_FICHA_SELECCIONADA);
                 jugadoresActuales.setBotonRackSeleccionado((CasillaBoton) evt.getSource());
@@ -498,6 +514,7 @@ public class ScrabbleMain {
         }
         );
     }
+
     public void spaceButtonPressed() {
         ventanaTablero.añadirListaCasillaBotonActionListener((java.awt.event.ActionEvent evt) -> {
 
@@ -510,9 +527,30 @@ public class ScrabbleMain {
 
                 if (fichaActual.getPuntos() == 0) {
                     String nuevaLetra = "empty";
-                    nuevaLetra = JOptionPane.showInputDialog(ventanaTablero, "Comodín: Escribe la letra quieres que sea esta ficha");
+                    
+                    boolean flag = true;
+                    do {
+                        nuevaLetra = JOptionPane.showInputDialog(ventanaTablero, "Escribe la letra que quieres que sea esta ficha", "Comodín", JOptionPane.INFORMATION_MESSAGE);
+
+                        // Validar si la entrada es una letra o una combinación aceptada (LL, RR, CH)
+                        if (nuevaLetra != null && (nuevaLetra.length() == 1 && Character.isLetter(nuevaLetra.charAt(0))) 
+                            || nuevaLetra.equalsIgnoreCase("LL") 
+                            || nuevaLetra.equalsIgnoreCase("RR") 
+                            || nuevaLetra.equalsIgnoreCase("CH")) {
+
+                            nuevaLetra = nuevaLetra.toUpperCase(); // Convertir a mayúsculas
+                            flag = false;  // Salir del bucle
+
+                        } else {
+                            JOptionPane.showMessageDialog(ventanaTablero, "Entrada inválida. Debes ingresar solo una letra o combinaciones válidas (LL, RR, CH).");
+                        }
+                    } while (flag);
+
                     String letra = nuevaLetra;
                     fichaActual.setLetra(letra);
+                    
+                    System.out.println("letra");
+                    System.out.println(letra);
                 }
 
                 casillaActual.setFichaAsignada(fichaActual);
@@ -542,8 +580,8 @@ public class ScrabbleMain {
                 estadoJuego.eliminarCasillaJugada(casillaActual);
                 jugadoresActuales.añadirFichaEspecifica(fichaActual);
                 jugadoresActuales.setBotonRackSeleccionado(null);
-                  if (fichasRestantes < 100) {
-                     fichasRestantes++;
+                if (fichasRestantes < 100) {
+                    fichasRestantes++;
                 }
                 if (fichaActual.getPuntos() == 0) {
                     fichaActual.setLetra(" ");
@@ -577,7 +615,7 @@ public class ScrabbleMain {
     private void turnoAtras() {
         restarPuntosJug1 = 0;
         restarPuntosJug2 = 0;
-    if (turnoJugador == 1) {
+        if (turnoJugador == 1) {
                 restarPuntosJug2 = puntuacionUltimoTurno;    
                 ventanaTablero.setPuntosJugador2(jug2.getPuntos() - restarPuntosJug2);
                 menu.setPuntos2(jug2.getPuntos() - restarPuntosJug2);
@@ -586,8 +624,8 @@ public class ScrabbleMain {
                 ventanaTablero.setPuntosJugador1(jug1.getPuntos() - restarPuntosJug1);
                 menu.setPuntos1(jug1.getPuntos() - restarPuntosJug1);
         }
-    
-    for (Casilla casilla : estadoJuego.getCasillasJugadas()) {
+        
+        for (Casilla casilla : estadoJuego.getCasillasJugadas()) {
             Ficha tile = casilla.getFichaAsignada();
             if (tile != null) {
                 casilla.eliminarFichaAsignada();
