@@ -22,7 +22,6 @@ public class Casilla implements Comparable<Casilla> {
     public int compareTo(Casilla otraCasilla) {
         final int ANTES = -1;
         final int DESPUES = 1;
-
         if (indice > otraCasilla.indice) {
             return DESPUES;
         } else {
@@ -45,6 +44,7 @@ public class Casilla implements Comparable<Casilla> {
     public void setModificadorPuntuacion(int nuevoModificador) {
         modificadorPuntos = nuevoModificador;
     }
+    
     public int getModificadorPuntos() {
         return modificadorPuntos;
     }

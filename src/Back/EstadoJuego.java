@@ -90,21 +90,24 @@ public class EstadoJuego {
 
             casillaActual = palabraAnotada.get(0);
             while (((casillaActual.getIndice() % 15) + 1) <= 14) {
-
                 if (casillaActual.getOcupado() && !palabraAnotada.contains(casillaActual)) {
                     palabraAnotada.add(casillaActual);
                 } else if (casillaActual.getOcupado() && casillasJugadasEsteTurno.contains(casillaActual)) {
-                    Casilla casillaArriba = tablero.casillas.get(casillaActual.getIndice() - 15);
-                    Casilla casillaAbajo = tablero.casillas.get(casillaActual.getIndice() + 15);
-
-                    if (casillaArriba.getOcupado()) {
-                        PalabraAnotada nuevaPalabra = new PalabraAnotada(EstadoJuego.ABAJO);
-                        nuevaPalabra.add(casillaArriba);
-                        añadirPalabraAnotada(nuevaPalabra, tablero);
-                    } else if (casillaAbajo.getOcupado()) {
-                        PalabraAnotada newWord = new PalabraAnotada(EstadoJuego.ABAJO);
-                        newWord.add(casillaAbajo);
-                        añadirPalabraAnotada(newWord, tablero);
+                    if(casillaActual.getIndice() - 15 >=0){
+                        Casilla casillaArriba = tablero.casillas.get(casillaActual.getIndice() - 15);
+                            if (casillaArriba.getOcupado()) {
+                            PalabraAnotada nuevaPalabra = new PalabraAnotada(EstadoJuego.ABAJO);
+                            nuevaPalabra.add(casillaArriba);
+                            añadirPalabraAnotada(nuevaPalabra, tablero);
+                        }
+                    }
+                    if(casillaActual.getIndice() + 15 <= 224){
+                        Casilla casillaAbajo = tablero.casillas.get(casillaActual.getIndice() + 15);
+                        if (casillaAbajo.getOcupado()) {
+                            PalabraAnotada newWord = new PalabraAnotada(EstadoJuego.ABAJO);
+                            newWord.add(casillaAbajo);
+                            añadirPalabraAnotada(newWord, tablero);
+                        }
                     }
                 } else if (!casillaActual.getOcupado()) {
                     Collections.sort(palabraAnotada);
